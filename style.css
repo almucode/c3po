@@ -4,7 +4,7 @@ body {
 
 section {
   position: relative;
-  border: 1px solid;
+  border: thin solid;
   margin: 2em 0 1em 0;
   padding: 0.5em 0.7em 0 0.7em;
 }
@@ -57,4 +57,11 @@ textarea {
   resize: vertical;
   overflow: auto;
   text-size-adjust: none;
+}
+
+div.placeholder {
+  border-width: thin;
+  border-style: dashed;
+  padding: 1em;
+  margin: 1em;
 }

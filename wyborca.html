@@ -16,23 +16,33 @@
     </header>
     <main>
       <section>
-        <h2>Głosowanie</h2>
+        <h2>Wczytaj dane głosowania</h2>
         <p>
-          Tutaj wklej przesłany przez komisję klucz do głosowania by zobaczyć
-          formularz:
+          Tutaj wklej przesłany przez komisję klucz by wczytać formularz
+          głosowania:
         </p>
         <form>
           <textarea rows="3" id="key"></textarea>
-          <button id="show">Pokaż</button>
+          <button id="show">Wczytaj</button>
         </form>
+      </section>
+      <section>
+        <h2>Oddaj głos</h2>
         <p>
-          Wypełnij formularz i go zaszyfruj by otrzymać kartę:
+          Wypełnij formularz i wygeneruj zaszyfrowaną kartę głosowania:
         </p>
         <form id="vote">
+          <div class="placeholder">
+            Tutaj zostanie wygenerowany formularz gdy tylko wczytasz dane
+            głosowania.
+          </div>
           <button id="encrypt">Szyfruj</button>
         </form>
+      </section>
+      <section>
+        <h2>Wyślij kartę głosowania</h2>
         <p>
-          Tę kartę wyślij do komisji:
+          Skopiuj poniższą kartę głosowania i wyślij ją do komisji skrutacyjnej:
         </p>
         <form>
           <textarea rows="3" id="ballot" readonly></textarea>

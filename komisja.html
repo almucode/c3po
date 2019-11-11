@@ -17,9 +17,9 @@
     </header>
     <main>
       <section>
-        <h2>Formularz</h2>
+        <h2>Stwórz formularz głosowania</h2>
         <p>
-          Podaj dostępne opcje aby utworzyć głosowanie:
+          Ustal dostępne opcje głosowania po czym wygeneruj klucz:
         </p>
         <form id="vote">
           <div>
@@ -28,10 +28,13 @@
             <button type="button" id="more">Dodaj</button>
           </div>
           <label for="max" class="before">Maksymalnie</label><input type="number" id="max" value="1" min="1">
-          <button id="create">Utwórz</button>
+          <button id="create">Wygeneruj</button>
         </form>
+      </section>
+      <section>
+        <h2>Prześlij klucz wyborcom</h2>
         <p>
-          Ten klucz do głosowania wyślij wyborcom:
+          Skopiuj poniższy klucz i roześlij go wyborcom:
         </p>
         <form>
           <textarea rows="3" id="key" readonly></textarea>
@@ -39,14 +42,22 @@
         </form>
       </section>
       <section>
-        <h2>Głosowanie</h2>
+        <h2>Zbierz karty głosowania</h2>
         <p>
-          Tutaj dodawaj karty przesłane przez wyborców:
+          Tutaj, jedna za drugą, wklejaj przesłane przez wyborców zaszyfrowane
+          karty głosowania i dodawaj je do puli:
         </p>
         <form>
           <textarea rows="3" id="ballot"></textarea>
           <button id="add">Dodaj</button>
         </form>
+      </section>
+      <section>
+        <h2>Zakończ głosowanie</h2>
+        <p>
+          Gdy wszystkie karty głosowania zostaną zebrane zakończ głosowanie by
+          poznać wyniki:
+        </p>
         <form>
           <label for="count" class="before">Zarejestrowano kart</label><output id="count">0</output>
           <button id="sum" data-confirm="Czy na pewno zakończyć głosowanie i skasować klucz?">Wyniki</button>
