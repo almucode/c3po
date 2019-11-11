@@ -3,8 +3,8 @@
 dom.contentLoaded.then(start);
 
 function start(args) {
-  let privateKey = null;
-  let votes = null;
+  let privateKey;
+  let votes;
 
   dom.preventFormSubmissions();
   dom.addClickListener("more", addOption);

@@ -51,10 +51,8 @@ function start() {
   function getVote() {
     let vote = new Set();
     let form = document.getElementById("vote");
-    for (let option of form.querySelectorAll('[name="option"]')) {
-      if (option.checked) {
-        vote.add(option.value);
-      }
+    for (let option of form.querySelectorAll('input[name="option"]:checked')) {
+      vote.add(option.value);
     }
     return vote;
   }
@@ -63,12 +61,11 @@ function start() {
     if (poll.max == 1) {
       return;  // Radio buttons do not require validation.
     }
-    let checkbox = event.target;
-    if (!checkbox.checked) {
+    if (!event.target.checked) {
       return;  // Unchecking a checkbox does not require validation.
     }
     if (getVote().size > poll.max) {
-      checkbox.checked = false;
+      event.target.checked = false;
     }
   }
 
