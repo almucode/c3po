@@ -15,8 +15,9 @@ function start(args) {
   dom.addClickListener("sum", summarizeVotes);
 
   function addOption() {
+    let form = document.getElementById("vote");
     let button = document.getElementById("more");
-    let option = document.getElementsByName("option")[0].cloneNode(true);
+    let option = form.querySelector('input[name="option"]').cloneNode(true);
     option.value = "";
     dom.prependSibling(button, option);
     dom.prependSibling(button, " ");
