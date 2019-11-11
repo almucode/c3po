@@ -59,6 +59,10 @@ textarea {
   text-size-adjust: none;
 }
 
+textarea[readonly] {
+	background-color: whitesmoke;
+}
+
 div.placeholder {
   border-width: thin;
   border-style: dashed;
