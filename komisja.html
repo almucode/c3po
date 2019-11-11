@@ -12,44 +12,48 @@
     <script src="komisja.js"></script>
   </head>
   <body>
-    <h1>C3PO - Komisja</h1>
-    <div class="section">
-      <h2>Formularz</h2>
-      <p>
-        Podaj dostępne opcje aby utworzyć głosowanie:
-      </p>
-      <form>
-        <div>
-          <input type="text" name="option">
-          <input type="text" name="option">
-          <input type="button" id="more" value="Dodaj">
-        </div>
-        <label for="max" class="before">Maksymalnie</label><input type="number" id="max" value="1" min="1">
-        <input type="submit" id="create" value="Utwórz">
-      </form>
-      <p>
-        Ten klucz do głosowania wyślij wyborcom:
-      </p>
-      <form>
-        <textarea rows="3" id="key" readonly></textarea>
-        <input type="button" id="copy" value="Kopiuj">
-      </form>
-    </div>
-    <div class="section">
-      <h2>Głosowanie</h2>
-      <p>
-        Tutaj dodawaj karty przesłane przez wyborców:
-      </p>
-      <form>
-        <textarea rows="3" id="ballot"></textarea>
-        <input type="submit" id="add" value="Dodaj">
-      </form>
-      <form>
-        <label for="count" class="before">Zarejestrowano kart</label><output id="count">0</output>
-        <input type="submit" id="sum" value="Wyniki"
-         data-confirm="Czy na pewno zakończyć głosowanie i skasować klucz?">
-        <textarea rows="10" id="summary" readonly></textarea>
-      </form>
-    </div>
+    <header>
+      <h1>C3PO - Komisja</h1>
+    </header>
+    <main>
+      <section>
+        <h2>Formularz</h2>
+        <p>
+          Podaj dostępne opcje aby utworzyć głosowanie:
+        </p>
+        <form>
+          <div>
+            <input type="text" name="option">
+            <input type="text" name="option">
+            <input type="button" id="more" value="Dodaj">
+          </div>
+          <label for="max" class="before">Maksymalnie</label><input type="number" id="max" value="1" min="1">
+          <input type="submit" id="create" value="Utwórz">
+        </form>
+        <p>
+          Ten klucz do głosowania wyślij wyborcom:
+        </p>
+        <form>
+          <textarea rows="3" id="key" readonly></textarea>
+          <input type="button" id="copy" value="Kopiuj">
+        </form>
+      </section>
+      <section>
+        <h2>Głosowanie</h2>
+        <p>
+          Tutaj dodawaj karty przesłane przez wyborców:
+        </p>
+        <form>
+          <textarea rows="3" id="ballot"></textarea>
+          <input type="submit" id="add" value="Dodaj">
+        </form>
+        <form>
+          <label for="count" class="before">Zarejestrowano kart</label><output id="count">0</output>
+          <input type="submit" id="sum" value="Wyniki"
+           data-confirm="Czy na pewno zakończyć głosowanie i skasować klucz?">
+          <textarea rows="10" id="summary" readonly></textarea>
+        </form>
+      </section>
+    </main>
   </body>
 </html>

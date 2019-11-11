@@ -11,30 +11,34 @@
     <script src="wyborca.js"></script>
   </head>
   <body>
-    <h1>C3PO - Wyborca</h1>
-    <div class="section">
-      <h2>Głosowanie</h2>
-      <p>
-        Tutaj wklej przesłany przez komisję klucz do głosowania by zobaczyć
-        formularz:
-      </p>
-      <form>
-        <textarea rows="3" id="key"></textarea>
-        <input type="submit" id="show" value="Pokaż">
-      </form>
-      <p>
-        Wypełnij formularz i go zaszyfruj by otrzymać kartę:
-      </p>
-      <form id="vote">
-        <input type="submit" id="encrypt" value="Szyfruj">
-      </form>
-      <p>
-        Tę kartę wyślij do komisji:
-      </p>
-      <form>
-        <textarea rows="3" id="ballot" readonly></textarea>
-        <input type="button" id="copy" value="Kopiuj">
-      </form>
-    </div>
+    <header>
+      <h1>C3PO - Wyborca</h1>
+    </header>
+    <main>
+      <section>
+        <h2>Głosowanie</h2>
+        <p>
+          Tutaj wklej przesłany przez komisję klucz do głosowania by zobaczyć
+          formularz:
+        </p>
+        <form>
+          <textarea rows="3" id="key"></textarea>
+          <input type="submit" id="show" value="Pokaż">
+        </form>
+        <p>
+          Wypełnij formularz i go zaszyfruj by otrzymać kartę:
+        </p>
+        <form id="vote">
+          <input type="submit" id="encrypt" value="Szyfruj">
+        </form>
+        <p>
+          Tę kartę wyślij do komisji:
+        </p>
+        <form>
+          <textarea rows="3" id="ballot" readonly></textarea>
+          <input type="button" id="copy" value="Kopiuj">
+        </form>
+      </section>
+    </main>
   </body>
 </html>

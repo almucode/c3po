@@ -2,14 +2,14 @@ body {
   font-family: system-ui;
 }
 
-div.section {
+section {
   position: relative;
   border: 1px solid;
   margin: 2em 0 1em 0;
   padding: 0.5em 0.7em 0 0.7em;
 }
 
-div.section h2 {
+section h2 {
   display: inline;
   position: absolute;
   top: -0.7em;
