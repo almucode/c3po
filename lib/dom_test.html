@@ -2,6 +2,7 @@
 <title>Tests for dom.js</title>
 <script src="dom.js"></script>
 <script src="testing/assert.js"></script>
+<script src="testing/base.js"></script>
 <script src="testing/test.js"></script>
 <script>
 asyncTest("Content loaded promise", async () => {
@@ -9,7 +10,9 @@ asyncTest("Content loaded promise", async () => {
   assert.notNull(document.getElementById("input_element"));
 });
 
+testStats.pending++;
 document.addEventListener("DOMContentLoaded", () => {
+  testStats.pending--;
   // The tests below depend on DOM being loaded.
   test("Get empty value", () => {
     assert.equal(dom.getValue("input_element"), "");
