@@ -4,7 +4,6 @@ dom.contentLoaded.then(start);
 
 function start() {
   let publicKey;
-  let poll;
 
   dom.preventFormSubmissions();
   dom.addEnterListener("key", showForm);
@@ -16,7 +15,7 @@ function start() {
     if (parts.length != 2) {
       return;
     }
-    poll = JSON.parse(buffer.toString(buffer.fromBase64(parts[0])));
+    let poll = JSON.parse(buffer.toString(buffer.fromBase64(parts[0])));
     let form = document.getElementById("vote");
     let button = document.getElementById("encrypt").cloneNode(true);
     while (form.lastChild) {
@@ -29,7 +28,6 @@ function start() {
       input.name = "option";
       input.id = "option" + n++;
       input.value = option;
-      input.addEventListener("change", validateChange);
       let label = document.createElement("label");
       label.htmlFor = input.id;
       label.className = "after";
@@ -48,29 +46,12 @@ function start() {
     });
   }
 
-  function getVote() {
-    let vote = new Set();
+  function encryptVote() {
+    let vote = [];
     let form = document.getElementById("vote");
     for (let option of form.querySelectorAll('input[name="option"]:checked')) {
-      vote.add(option.value);
+      vote.push(option.value);
     }
-    return vote;
-  }
-
-  function validateChange(event) {
-    if (poll.max == 1) {
-      return;  // Radio buttons do not require validation.
-    }
-    if (!event.target.checked) {
-      return;  // Unchecking a checkbox does not require validation.
-    }
-    if (getVote().size > poll.max) {
-      event.target.checked = false;
-    }
-  }
-
-  function encryptVote() {
-    let vote = Array.from(getVote());
     var plaintext = buffer.fromString(JSON.stringify(vote));
     return crypto.encrypt(publicKey, plaintext).then(ciphertext => {
       dom.setValue("ballot", buffer.toBase64(ciphertext));
