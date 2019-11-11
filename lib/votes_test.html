@@ -17,6 +17,12 @@ test("Total for two votes with three options", () => {
   assert.equal(votes.total, 2);
 });
 
+test("Total for an empty vote", () => {
+  let votes = new Votes(1);
+  votes.add([]);
+  assert.equal(votes.total, 1);
+});
+
 test("Total for an invalid vote", () => {
   let votes = new Votes(2);
   votes.add(["a", "b", "c"]);
@@ -33,6 +39,12 @@ test("Summary for two votes with three options", () => {
   votes.add(["b"]);
   votes.add(["a", "b"]);
   assert.equal(votes.summarize(), "b: 2\na: 1");
+});
+
+test("Summary for an empty vote", () => {
+  let votes = new Votes(1);
+  votes.add([]);
+  assert.equal(votes.summarize(), "-: 1");
 });
 
 test("Summary for an invalid vote", () => {
