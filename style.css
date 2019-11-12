@@ -6,7 +6,7 @@ section {
   position: relative;
   border: thin solid;
   margin: 2em 0 1em 0;
-  padding: 0.5em 0.7em 0 0.7em;
+  padding: 0.7em 0.7em 0.3em 0.7em;
 }
 
 section h2 {
@@ -15,19 +15,24 @@ section h2 {
   top: -0.7em;
   left: 0.5em;
   margin: 0;
-  padding: 0 0.2em 0 0.2em;
+  padding: 0 0.2em;
   background: white;
 }
 
 form {
-  margin: 1em 0 1em 0;
+  margin: 1em 0;
+}
+
+fieldset {
+  border: none;
+  padding: 0;
+  margin: 1em 0;
 }
 
 button, input, select, textarea {
   font-family: inherit;
   font-size: inherit;
   box-sizing: border-box;
-  margin: 0.3em 0 0.3em 0;
 }
 
 input[type="text"] {
@@ -53,7 +58,7 @@ label.after:before {
 textarea {
   display: block;
   width: 100%;
-  margin: 0.5em 0 0.5em 0;
+  margin: 1em 0;
   resize: vertical;
   overflow: auto;
   text-size-adjust: none;

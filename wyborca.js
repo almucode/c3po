@@ -22,6 +22,7 @@ function start() {
       form.removeChild(form.lastChild);
     }
     let n = 1;
+    let fieldset = document.createElement("fieldset");
     for (let option of poll.options) {
       let input = document.createElement("input");
       input.type = (poll.max > 1) ? "checkbox" : "radio";
@@ -35,8 +36,9 @@ function start() {
       let div = document.createElement("div");
       dom.appendChild(div, input);
       dom.appendChild(div, label);
-      dom.appendChild(form, div);
+      dom.appendChild(fieldset, div);
     }
+    dom.appendChild(form, fieldset);
     dom.appendChild(form, button);
     dom.clearValue("ballot");
 
