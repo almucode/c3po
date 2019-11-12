@@ -1,0 +1,25 @@
+html {
+  max-width: 1024px;
+  margin: auto;
+}
+
+body {
+  font-family: system-ui;
+}
+
+section {
+  position: relative;
+  border: thin solid;
+  margin: 2em 0 1em 0;
+  padding: 0.7em 0.7em 0.3em 0.7em;
+}
+
+section h2 {
+  display: inline;
+  position: absolute;
+  top: -0.7em;
+  left: 0.5em;
+  margin: 0;
+  padding: 0 0.2em;
+  background: white;
+}
