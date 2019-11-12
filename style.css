@@ -64,7 +64,7 @@ textarea {
   text-size-adjust: none;
 }
 
-textarea[readonly] {
+textarea[readonly], input[readonly] {
 	background-color: whitesmoke;
 }
 

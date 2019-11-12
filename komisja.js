@@ -70,7 +70,7 @@ function start(args) {
     let ciphertext = buffer.fromBase64(ballot);
     crypto.decrypt(privateKey, ciphertext).then(plaintext => {
       votes.add(JSON.parse(buffer.toString(plaintext)));
-      document.getElementById("count").textContent = votes.total;
+      dom.setValue("count", votes.total);
       // Clear the ballot after reading to avoid repeated additions.
       dom.clearValue("ballot");
     });
