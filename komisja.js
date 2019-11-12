@@ -26,7 +26,7 @@ function start(args) {
   function newVote() {
     votes = new Votes(document.getElementById("max").value);
     dom.clearValue("summary");
-    document.getElementById("count").textContent = 0;
+    dom.setValue("count", 0);
   }
 
   function createPoll() {
