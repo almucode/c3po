@@ -4,7 +4,7 @@
        url("../fonts/fa-solid-900.woff") format("woff");
 }
 
-*[class|="icon"] {
+.icon {
   font-family: 'Awesome';
   -moz-osx-font-smoothing: grayscale;
   -webkit-font-smoothing: antialiased;

@@ -22,6 +22,10 @@ button, input, select, textarea {
   box-sizing: border-box;
 }
 
+button .icon {
+  opacity: 0.4;
+}
+
 input[readonly], textarea[readonly] {
 	background-color: whitesmoke;
 }
