@@ -5,13 +5,19 @@ html {
 
 body {
   font-family: system-ui;
+  counter-reset: sections;
 }
 
 section {
+  counter-increment: sections;
   position: relative;
   border: thin solid;
   margin: 2em 0 1em 0;
   padding: 0.7em 0.7em 0.3em 0.7em;
+}
+
+section h2:before {
+  content: counter(sections) ".\a0";
 }
 
 section h2 {
