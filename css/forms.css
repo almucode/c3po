@@ -8,6 +8,11 @@ fieldset {
   margin: 1em 0;
 }
 
+legend {
+  padding: 0;
+  margin: 0.3em 0;
+}
+
 label.before::after {
   content: ":\a0";
 }

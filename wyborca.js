@@ -23,6 +23,11 @@ function start() {
     }
     let n = 1;
     let fieldset = document.createElement("fieldset");
+    if (poll.max > 1 && poll.max < poll.options.length) {
+      let legend = document.createElement("legend");
+      legend.textContent = form.dataset.maxLabel + " " + poll.max;
+      dom.appendChild(fieldset, legend);
+    }
     for (let option of poll.options) {
       let input = document.createElement("input");
       input.type = (poll.max > 1) ? "checkbox" : "radio";
