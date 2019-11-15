@@ -29,6 +29,16 @@ document.addEventListener("DOMContentLoaded", () => {
     assert.equal(dom.getValue("input_element"), "");
   });
 
+  test("Get values with empty", () => {
+    assert.valuesEqual(dom.getValues("form", "input, button", false),
+                       ["", "but", "sub"]);
+  });
+
+  test("Get values ignoring empty", () => {
+    assert.valuesEqual(dom.getValues("form", "input, button", true),
+                       ["but", "sub"]);
+  });
+
   test("Prevent form submissions", () => {
     dom.preventFormSubmissions();
     document.getElementById("submit_element").click();
@@ -88,6 +98,8 @@ document.addEventListener("DOMContentLoaded", () => {
     let input = document.getElementById("input_element");
     dom.appendChild(span, input);
     assert.equal(input.parentNode, span);
+    let form = document.getElementById("form");
+    dom.appendChild(form, input);
   });
 
   test("Append child text", () => {
@@ -96,12 +108,23 @@ document.addEventListener("DOMContentLoaded", () => {
     dom.appendChild(button, "bar");
     assert.equal(button.textContent, "foobar");
   });
+
+  test("Remove children", () => {
+    let button = document.getElementById("button_element");
+    button.textContent = "foo";
+    let span = document.createElement("span");
+    dom.appendChild(button, span);
+    dom.appendChild(span, "bar");
+    dom.removeChildren(button);
+    assert.equal(button.textContent, "");
+    button.textContent = "foo";
+  });
 });
 </script>
 <body>
   <form id="form">
     <input id="input_element">
-    <button type="button" id="button_element">Button</button>
-    <button type="submit" id="submit_element">Submit</button>
+    <button type="button" id="button_element" value="but">Button</button>
+    <button type="submit" id="submit_element" value="sub">Submit</button>
   </form>
 </body>
