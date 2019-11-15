@@ -49,10 +49,7 @@ p {
 }
 
 form, fieldset {
-  margin-top: 8px;
-  margin-bottom: 8px;
-  margin-left: unset;
-  margin-right: unset;
+  margin: 8px 0;
 }
 
 button, input, select, textarea {
