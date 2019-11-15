@@ -11,13 +11,11 @@ function start() {
   dom.addClickListener("copy", copyBallot);
 
   function showForm() {
-    Poll.deserialize(dom.getValue("key")).then(deserialized => {
-      poll = deserialized;
+    Poll.deserialize(dom.getValue("key")).then(deserializedPoll => {
+      poll = deserializedPoll;
       let form = document.getElementById("vote");
       let button = document.getElementById("encrypt").cloneNode(true);
-      while (form.lastChild) {
-        form.removeChild(form.lastChild);
-      }
+      dom.removeChildren(form);
       let fieldset = document.createElement("fieldset");
       if (poll.maxOptions > 1 && poll.maxOptions < poll.options.length) {
         let legend = document.createElement("legend");
