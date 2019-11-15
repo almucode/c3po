@@ -10,21 +10,9 @@ body {
 
 section {
   counter-increment: sections;
-  border: thin solid;
   margin: 2em 0 1em 0;
-  padding: 0.7em 0.7em 0.3em 0.7em;
-}
-
-section header {
-  margin: -1.7em 0 0 0;
 }
 
 section h2:before {
   content: counter(sections) ".\a0";
-}
-
-section h2 {
-  display: inline;
-  padding: 0 0.2em;
-  background: white;
 }

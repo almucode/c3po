@@ -56,7 +56,7 @@ textarea {
   text-size-adjust: none;
 }
 
-div.placeholder {
+.placeholder {
   border-width: thin;
   border-style: dashed;
   padding: 1em;
