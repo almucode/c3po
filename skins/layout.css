@@ -1,11 +1,4 @@
-html {
-  max-width: 1024px;
-  margin: auto;
-}
-
 body {
-  font-family: system-ui;
-  counter-reset: sections;
   margin: 0;
 }
 
@@ -35,10 +28,19 @@ main {
 
 section {
   counter-increment: sections;
+  border: unset;
+  margin: unset;
+  padding: unset;
 }
 
-section h2:before {
-  content: counter(sections) ".\a0";
+section header {
+  margin: unset;
+}
+
+section h2 {
+  display: unset;
+  padding: unset;
+  background: unset;
 }
 
 p {

@@ -1,44 +1,27 @@
 form, fieldset {
   margin-top: 8px;
   margin-bottom: 8px;
+  margin-left: unset;
+  margin-right: unset;
 }
 
-legend {
-  padding: 0;
-  margin: 0.3em 0;
-}
-
-label.before::after {
-  content: ":\a0";
-}
-
-label.after::before {
-  content: "\a0";
+fieldset {
+  border: unset;
+  padding: unset;
 }
 
 button, input, select, textarea {
-  font-family: inherit;
-  font-size: inherit;
-  box-sizing: border-box;
   margin-top: 4px;
   margin-bottom: 4px;
 }
 
-input[readonly], textarea[readonly] {
-	background-color: whitesmoke;
+button .icon {
+  opacity: unset;
 }
 
 input[type="text"] {
   width: 100%;
   display: block;
-}
-
-input[type="number"] {
-  width: 3em;
-}
-
-input[type="checkbox"], input[type="radio"] {
-  margin: 0.3em;
 }
 
 textarea {
@@ -48,9 +31,6 @@ textarea {
   padding: 8px;
   border-radius: 8px;
   border-style: solid;
-  resize: vertical;
-  overflow: auto;
-  text-size-adjust: none;
 }
 
 button {
