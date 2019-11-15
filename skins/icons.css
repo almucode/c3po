@@ -1,0 +1,42 @@
+@font-face {
+  font-family: 'Awesome';
+  src: url("../fonts/fa-solid-900.woff2") format("woff2"),
+       url("../fonts/fa-solid-900.woff") format("woff");
+}
+
+.icon {
+  font-family: 'Awesome';
+  -moz-osx-font-smoothing: grayscale;
+  -webkit-font-smoothing: antialiased;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 1.2em;
+}
+
+.icon-copy:before {
+  content: "\f328";
+}
+
+.icon-encrypt:before {
+  content: "\f084";
+}
+
+.icon-export:before {
+  content: "\f56e";
+}
+
+.icon-import:before {
+  content: "\f56f";
+}
+
+.icon-more:before {
+  content: "\f067";
+}
+
+.icon-sum:before {
+  content: "\f681";
+}
+
+.icon-vote:before {
+  content: "\f772";
+}

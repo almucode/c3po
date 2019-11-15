@@ -1,0 +1,51 @@
+html {
+  max-width: 1024px;
+  margin: auto;
+}
+
+body {
+  font-family: system-ui;
+  counter-reset: sections;
+  margin: 0;
+}
+
+h1, h2 {
+  font-weight: normal;
+  margin: 0;
+}
+
+h1, main, footer {
+  padding-left: 24px;
+  padding-right: 24px;
+}
+
+h1 {
+  padding-top: 24px;
+  padding-bottom: 24px;
+}
+
+h2 {
+  padding-top: 16px;
+  padding-bottom: 16px;
+}
+
+main {
+  padding-bottom: 16px;
+}
+
+section {
+  counter-increment: sections;
+}
+
+section h2:before {
+  content: counter(sections) ".\a0";
+}
+
+p {
+  margin: 8px 0;
+}
+
+footer {
+  padding-top: 8px;
+  padding-bottom: 8px;
+}

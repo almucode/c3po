@@ -1,0 +1,72 @@
+form, fieldset {
+  margin-top: 8px;
+  margin-bottom: 8px;
+}
+
+legend {
+  padding: 0;
+  margin: 0.3em 0;
+}
+
+label.before::after {
+  content: ":\a0";
+}
+
+label.after::before {
+  content: "\a0";
+}
+
+button, input, select, textarea {
+  font-family: inherit;
+  font-size: inherit;
+  box-sizing: border-box;
+  margin-top: 4px;
+  margin-bottom: 4px;
+}
+
+input[readonly], textarea[readonly] {
+	background-color: whitesmoke;
+}
+
+input[type="text"] {
+  width: 100%;
+  display: block;
+}
+
+input[type="number"] {
+  width: 3em;
+}
+
+input[type="checkbox"], input[type="radio"] {
+  margin: 0.3em;
+}
+
+textarea {
+  display: block;
+  width: 100%;
+  min-height: 8em;
+  padding: 8px;
+  border-radius: 8px;
+  border-style: solid;
+  resize: vertical;
+  overflow: auto;
+  text-size-adjust: none;
+}
+
+button {
+  width: 100%;
+  padding: 8px;
+  border-radius: 8px;
+  border-style: solid;
+  border-width: 4px;
+  cursor: pointer;
+}
+
+.placeholder {
+  border-width: thin;
+  border-style: dashed;
+  border-radius: 12px;
+  padding: 32px;
+  margin: 12px 0;
+  text-align: center;
+}
