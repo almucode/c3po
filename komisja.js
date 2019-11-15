@@ -5,6 +5,7 @@ dom.contentLoaded.then(start);
 function start(args) {
   let privateKey;
   let votes;
+  let poll;
 
   dom.preventFormSubmissions();
   dom.addClickListener("more", addOption);
@@ -33,27 +34,21 @@ function start(args) {
     forgetKey();
     newVote();
 
-    let poll = {
-      options: []
-    };
-    let options = document.getElementsByName("option");
-    for (let option of options) {
+    let options = [];
+    for (let option of document.getElementsByName("option")) {
       if (option.value) {
-        poll.options.push(option.value);
+        options.push(option.value);
       }
     }
-    if (!poll.options.length) {
+    if (!options.length) {
       return;
     }
-    poll.max = votes.maxOptions;
-    let pollData = buffer.fromString(JSON.stringify(poll));
-
     crypto.generateKeyPair().then(keyPair => {
       privateKey = keyPair.privateKey;
-      return crypto.exportPublicKey(keyPair.publicKey);
-    }).then(publicKeyData => {
-      dom.setValue("key", buffer.toBase64(pollData) + "_" +
-                          buffer.toBase64(publicKeyData));
+      poll = new Poll(options, votes.maxOptions, keyPair.publicKey);
+      return poll.serialize();
+    }).then(serializedPoll => {
+      dom.setValue("key", serializedPoll);
       copyKey();
     });
   }
