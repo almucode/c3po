@@ -24,22 +24,14 @@ function start(args) {
     dom.prependSibling(button, " ");
   }
 
-  function newVote() {
+  function createPoll() {
+    forgetKey();
+
     votes = new Votes(document.getElementById("max").value);
     dom.clearValue("summary");
     dom.setValue("count", 0);
-  }
 
-  function createPoll() {
-    forgetKey();
-    newVote();
-
-    let options = [];
-    for (let option of document.getElementsByName("option")) {
-      if (option.value) {
-        options.push(option.value);
-      }
-    }
+    let options = dom.getValues("vote", 'input[name="option"]', true);
     if (!options.length) {
       return;
     }
