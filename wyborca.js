@@ -18,19 +18,20 @@ function start() {
       while (form.lastChild) {
         form.removeChild(form.lastChild);
       }
-      let n = 1;
       let fieldset = document.createElement("fieldset");
       if (poll.maxOptions > 1 && poll.maxOptions < poll.options.length) {
         let legend = document.createElement("legend");
         legend.textContent = form.dataset.maxLabel + " " + poll.maxOptions;
         dom.appendChild(fieldset, legend);
       }
+      let n = 0;
       for (let option of poll.options) {
+        let index = n++;
         let input = document.createElement("input");
         input.type = (poll.maxOptions > 1) ? "checkbox" : "radio";
         input.name = "option";
-        input.id = "option" + n++;
-        input.value = option;
+        input.value = index;
+        input.id = "option" + index;
         let label = document.createElement("label");
         label.htmlFor = input.id;
         label.className = "after";
