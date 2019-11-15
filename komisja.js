@@ -1,5 +1,7 @@
 'use strict';
 
+skin.load("skins", skin.getFromUrl() || "default");
+
 dom.contentLoaded.then(start);
 
 function start(args) {
