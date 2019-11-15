@@ -54,9 +54,8 @@ function start(args) {
     if (!ballot || !privateKey) {
       return;
     }
-    let ciphertext = buffer.fromBase64(ballot);
-    crypto.decrypt(privateKey, ciphertext).then(plaintext => {
-      votes.add(poll.indicesToOptions(buffer.toObject(plaintext)));
+    poll.decryptVote(ballot, privateKey).then(vote => {
+      votes.add(vote);
       dom.setValue("count", votes.total);
       // Clear the ballot after reading to avoid repeated additions.
       dom.clearValue("ballot");

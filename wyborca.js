@@ -50,9 +50,8 @@ function start() {
 
   function encryptVote() {
     let indices = dom.getValues("vote", 'input[name="option"]:checked', false);
-    var plaintext = buffer.fromObject(indices);
-    return crypto.encrypt(poll.publicKey, plaintext).then(ciphertext => {
-      dom.setValue("ballot", buffer.toBase64(ciphertext));
+    return poll.encryptVote(indices).then(ballot => {
+      dom.setValue("ballot", ballot);
       copyBallot();
     });
   }
