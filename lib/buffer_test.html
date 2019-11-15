@@ -53,7 +53,7 @@ test("Short Base64 to buffer", () => {
 });
 
 test("Invalid Base64 to buffer", () => {
-  assert.throws(() => {buffer.fromBase64("A===")}, "InvalidCharacterError");
+  assert.throws(() => { buffer.fromBase64("A==="); }, "InvalidCharacterError");
 });
 
 test("Full value range to Base64 and back", () => {
@@ -90,5 +90,38 @@ test("Short string to buffer", () => {
 test("Unicode string to buffer and back", () => {
   let text = "żółw";
   assert.equal(buffer.toString(buffer.fromString(text)), text);
+});
+
+test("Empty buffer to object", () => {
+  assert.throws(() => { buffer.toObject(fromArray([])); }, "SyntaxError");
+});
+
+test("Short buffer to object", () => {
+  assert.jsonEqual(buffer.toObject(fromArray([91, 49, 93])), [1]);
+});
+
+test("Buffer view to object", () => {
+  let data = fromArray([91, 91, 49, 93, 93]);
+  assert.jsonEqual(buffer.toObject(new Uint8Array(data, 1, 3)), [1]);
+});
+
+test("Empty object to buffer", () => {
+  assert.valuesEqual(toArray(buffer.fromObject({})), [123, 125]);
+});
+
+test("Simple Array to buffer", () => {
+  assert.valuesEqual(toArray(buffer.fromObject([1])), [91, 49, 93]);
+});
+
+test("Complex object to buffer and back", () => {
+  let obj = {
+    a: "żółw",
+    b: 5,
+    c: null,
+    d: [1, 2],
+    e: { f: 1.5 },
+    g: true,
+  };
+  assert.jsonEqual(buffer.toObject(buffer.fromObject(obj)), obj);
 });
 </script>
