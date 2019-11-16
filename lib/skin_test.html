@@ -18,11 +18,11 @@ test("Bad skin", () => {
   assert.equal(skin.getFromUrl(), null);
 });
 test("Load skin", () => {
-  skin.load("skins", "test");
+  skin.load("../skins", "default");
   let links = document.getElementsByTagName("link");
   let lastLink = links[links.length - 1];
   assert.equal(lastLink.rel, "stylesheet");
-  let css = new URL("skins/test.css", location.href);
+  let css = new URL("../skins/default.css", location.href);
   assert.equal(lastLink.href, css.href);
 });
 </script>
