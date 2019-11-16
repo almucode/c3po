@@ -1,6 +1,6 @@
 'use strict';
 
-skin.load("skins", skin.getFromUrl() || "default");
+skin.load("skins", skin.getFromUrl() || "almu");
 
 dom.contentLoaded.then(start);
 
