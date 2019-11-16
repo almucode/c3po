@@ -77,6 +77,11 @@ textarea {
   border-style: solid;
 }
 
+textarea[readonly] {
+	color: black;
+	background-color: lightgray;
+}
+
 .placeholder {
   border-width: thin;
   border-style: dashed;
