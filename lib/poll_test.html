@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<title>Tests for poll.js</title>
+<script src="buffer.js"></script>
+<script src="crypto.js"></script>
+<script src="poll.js"></script>
+<script src="testing/assert.js"></script>
+<script src="testing/base.js"></script>
+<script src="testing/test.js"></script>
+<script>
+asyncTest("Serialize and deserialize", async () => {
+  let keyPair = await crypto.generateKeyPair();
+  let poll = new Poll(["a", "b", "c"], 2, keyPair.publicKey);
+  let serialized = await poll.serialize();
+  let deserialized = await Poll.deserialize(serialized);
+  assert.valuesEqual(deserialized.options, poll.options);
+  assert.equal(deserialized.maxOptions, poll.maxOptions);
+  let secret = new Uint8Array(13, 27, 43).buffer;
+  let ciphertext = await crypto.encrypt(deserialized.publicKey, secret);
+  let plaintext = await crypto.decrypt(keyPair.privateKey, ciphertext);
+  assert.valuesEqual(new Uint8Array(plaintext), new Uint8Array(secret));
+});
+
+asyncTest("Encrypt and decrypt", async () => {
+  let keyPair = await crypto.generateKeyPair();
+  let poll = new Poll(["a", "b", "c"], 2, keyPair.publicKey);
+  let ballot = await poll.encryptVote([0, 2]);
+  let vote = await poll.decryptVote(ballot, keyPair.privateKey);
+  assert.valuesEqual(vote, ["a", "c"]);
+});
+</script>
