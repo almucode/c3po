@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<title>Tests for skin.js</title>
+<script src="skin.js"></script>
+<script src="testing/assert.js"></script>
+<script src="testing/base.js"></script>
+<script src="testing/test.js"></script>
+<script>
+test("No skin", () => {
+  history.replaceState({}, "", "?noskin=test");
+  assert.equal(skin.getFromUrl(), null);
+});
+test("Test skin", () => {
+  history.replaceState({}, "", "?skin=test");
+  assert.equal(skin.getFromUrl(), "test");
+});
+test("Bad skin", () => {
+  history.replaceState({}, "", "?skin=../test");
+  assert.equal(skin.getFromUrl(), null);
+});
+test("Load skin", () => {
+  skin.load("skins", "test");
+  let links = document.getElementsByTagName("link");
+  let lastLink = links[links.length - 1];
+  assert.equal(lastLink.rel, "stylesheet");
+  let css = new URL("skins/test.css", location.href);
+  assert.equal(lastLink.href, css.href);
+});
+</script>
