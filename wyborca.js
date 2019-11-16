@@ -13,7 +13,11 @@ function start() {
   dom.addClickListener("copy", copyBallot);
 
   function showForm() {
-    Poll.deserialize(dom.getValue("key")).then(deserializedPoll => {
+    let key = dom.getValue("key");
+    if (!key) {
+      return;
+    }
+    Poll.deserialize(key).then(deserializedPoll => {
       poll = deserializedPoll;
       let form = document.getElementById("vote");
       let button = document.getElementById("encrypt").cloneNode(true);
