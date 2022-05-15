@@ -30,11 +30,11 @@
         </p>
         <form id="vote">
           <fieldset>
-            <input type="text" name="option">
-            <input type="text" name="option">
+            <label for="option" class="before" name="order">1</label><input type="text" name="option">
+            <label for="option" class="before" name="order">2</label><input type="text" name="option">
             <button type="button" id="more"><i class="icon icon-more"></i> Dodaj</button>
           </fieldset>
-          <label for="max" class="before">Maksymalnie</label><input type="number" id="max" value="1" min="1">
+          <label for="max" class="before">Maksymalnie</label><input type="number" id="max" value="1" min="1" max="2">
           <button id="create"><i class="icon icon-export"></i> Wygeneruj</button>
         </form>
       </section>
@@ -55,8 +55,9 @@
           <h2>Zbierz karty głosowania</h2>
         </header>
         <p>
-          Tutaj, jedna za drugą, wklejaj przesłane przez wyborców zaszyfrowane
-          karty głosowania i dodawaj je do puli:
+          Tutaj wklejaj przesłane przez wyborców zaszyfrowane karty głosowania
+		  (może być wiele oddzielonych przecinkiem, spacją lub nową linią),
+		  i dodawaj je do puli:
         </p>
         <form>
           <textarea rows="3" id="ballot"></textarea>
