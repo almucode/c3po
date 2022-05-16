@@ -36,22 +36,11 @@ input[readonly], textarea[readonly] {
 }
 
 input[type="text"] {
-  width: 96%;
+  width: 12em;
 }
 
 input[type="number"] {
   width: 3em;
-}
-
-input[type="number"]:read-only::-webkit-inner-spin-button,
-input[type="number"]:read-only::-webkit-outer-spin-button {
-  -webkit-appearance: none;
-  margin: 0;
-}
-
-input[type="number"]:read-only {
-  -moz-appearance:textfield;
-  margin: 0;
 }
 
 input[type="checkbox"], input[type="radio"] {

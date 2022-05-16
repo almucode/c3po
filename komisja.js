@@ -20,15 +20,10 @@ function start(args) {
   function addOption() {
     let form = document.getElementById("vote");
     let button = document.getElementById("more");
-	let max = document.getElementById("max");
-	let options = Number(max.getAttribute("max")) + 1
-	let label = form.querySelector('label[name="order"]').cloneNode(true);
-	label.textContent = options
-    dom.prependSibling(button, label);
     let option = form.querySelector('input[name="option"]').cloneNode(true);
     option.value = "";
     dom.prependSibling(button, option);
-	max.setAttribute("max", options);
+    dom.prependSibling(button, " ");
   }
 
   function createPoll() {
@@ -61,17 +56,18 @@ function start(args) {
     if (!ballot || !privateKey) {
       return;
     }
-	// Clear the ballot after reading to avoid repeated additions.
-	dom.clearValue("ballot");
-	// Split (by newline, comma, space) and deduplicate
-	let ballot_entries = [...new Set(ballot.split(/\r\n|\n\r|\n|\r|,| /).filter(n => n))];
-	// Now we can add each vote and update counter
-	for (let b in ballot_entries){
-	  poll.decryptVote(ballot_entries[b], privateKey).then(vote => {
-		  votes.add(vote);
-		  dom.setValue("count", votes.total);
-		});
-	}
+    // Clear the ballot after reading to avoid repeated additions.
+    dom.clearValue("ballot");
+    // Split (using predefined separators) and deduplicate votes
+    let separators = /\r\n|\n\r|\n|\r|,| |\.|:|;/;
+    let ballot_entries = [...new Set(ballot.split(separators).filter(n => n))];
+    // Now we can add each vote and update counter
+    for (let b in ballot_entries){
+      poll.decryptVote(ballot_entries[b], privateKey).then(vote => {
+        votes.add(vote);
+        dom.setValue("count", votes.total);
+      });
+    }
   }
 
   function summarizeVotes() {

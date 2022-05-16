@@ -63,6 +63,11 @@ button .icon {
   font-size: 1.2em;
 }
 
+input[type="text"] {
+  width: 100%;
+  display: block;
+}
+
 textarea {
   display: block;
   width: 100%;
