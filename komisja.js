@@ -20,10 +20,15 @@ function start(args) {
   function addOption() {
     let form = document.getElementById("vote");
     let button = document.getElementById("more");
+    let max = document.getElementById("max");
+    let options = Number(max.getAttribute("max")) + 1
+    let label = form.querySelector('label[name="order"]').cloneNode(true);
+    label.textContent = options
+    dom.prependSibling(button, label);
     let option = form.querySelector('input[name="option"]').cloneNode(true);
     option.value = "";
     dom.prependSibling(button, option);
-    dom.prependSibling(button, " ");
+    max.setAttribute("max", options);
   }
 
   function createPoll() {
@@ -31,7 +36,7 @@ function start(args) {
 
     votes = new Votes(dom.getValue("max"));
     dom.clearValue("summary");
-    dom.setValue("count", 0);
+	document.getElementById("count").textContent = 0;
 
     let options = dom.getValues("vote", 'input[name="option"]', true);
     if (!options.length) {

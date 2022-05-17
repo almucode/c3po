@@ -9,6 +9,7 @@ fieldset {
 }
 
 legend {
+  font-weight:bold;
   padding: 0;
   margin: 0.3em 0;
 }
@@ -19,6 +20,10 @@ label.before::after {
 
 label.after::before {
   content: "\a0";
+}
+
+td.bolded{
+  font-weight:bold;
 }
 
 button, input, select, textarea {
@@ -36,7 +41,7 @@ input[readonly], textarea[readonly] {
 }
 
 input[type="text"] {
-  width: 12em;
+  width: 96%;
 }
 
 input[type="number"] {
