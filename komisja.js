@@ -29,7 +29,7 @@ function start(args) {
   function createPoll() {
     forgetKey();
 
-    votes = new Votes(document.getElementById("max").value);
+    votes = new Votes(dom.getValue("max"));
     dom.clearValue("summary");
     dom.setValue("count", 0);
 
@@ -52,22 +52,34 @@ function start(args) {
   }
 
   function addVote() {
-    let ballot = dom.getValue("ballot");
-    if (!ballot || !privateKey) {
+    let input = document.getElementById("ballot");
+    if (!input.value || !privateKey) {
       return;
     }
-    // Clear the ballot after reading to avoid repeated additions.
-    dom.clearValue("ballot");
-    // Split (using predefined separators) and deduplicate votes
-    let separators = /\r\n|\n\r|\n|\r|,| |\.|:|;/;
-    let ballot_entries = [...new Set(ballot.split(separators).filter(n => n))];
-    // Now we can add each vote and update counter
-    for (let b in ballot_entries){
-      poll.decryptVote(ballot_entries[b], privateKey).then(vote => {
+    // Disable elements to prevent duplications/overwrites
+    input.disable = true;
+    let button = document.getElementById("add");
+    button.disable = true;
+    // Split (using predefined separators) and deduplicate ballots
+    let separators = /\n|\r|,| |\.|:|;/;
+    let ballots = [...new Set(input.value.split(separators).filter(n => n))];
+    // Clear the input, so if decryption takes time, user can see it's started
+    input.value = "";
+    // Now we can add each vote
+    let promises = []
+    for (let b in ballots) {
+      promises.push(poll.decryptVote(ballots[b], privateKey).then(vote => {
         votes.add(vote);
-        dom.setValue("count", votes.total);
-      });
+      }, error => {input.value += ballots[b] + "\n\n";}));
     }
+    // Wait for all Promises to fulfill
+    Promise.all(promises).finally(() => {
+      // Update counter
+      dom.setValue("count", votes.total);
+      // Unlock elements
+      button.disable = false;
+      input.disable = false;
+    });
   }
 
   function summarizeVotes() {
