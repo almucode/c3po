@@ -57,7 +57,7 @@ function start(args) {
       return;
     }
     // Split (using whitespace or punctuation) and deduplicate entries
-    ballots = new Set(ballots.split(/[\s,.:;]/);
+    ballots = new Set(ballots.split(/[\s,.:;]/));
     // Clear the input and disable elements to prevent duplications/overwrites
     dom.disable("ballots");
     dom.disable("add");
