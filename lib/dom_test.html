@@ -23,6 +23,12 @@ document.addEventListener("DOMContentLoaded", () => {
     assert.equal(dom.getValue("input_element"), "test");
   });
 
+  test("Set and append value", () => {
+    dom.setValue("input_element", "foo");
+    dom.appendValue("input_element", "bar");
+    assert.equal(dom.getValue("input_element"), "foobar");
+  });
+
   test("Set and clear value", () => {
     dom.setValue("input_element", "test");
     dom.clearValue("input_element");
