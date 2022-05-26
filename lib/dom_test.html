@@ -39,6 +39,14 @@ document.addEventListener("DOMContentLoaded", () => {
                        ["but", "sub"]);
   });
 
+  test("Disables and enables an element", () => {
+    assert.equal(document.getElementById("input_element").disabled, false);
+    dom.disable("input_element")
+    assert.equal(document.getElementById("input_element").disabled, true);
+    dom.enable("input_element")
+    assert.equal(document.getElementById("input_element").disabled, false);
+  });
+
   test("Prevent form submissions", () => {
     dom.preventFormSubmissions();
     document.getElementById("submit_element").click();
