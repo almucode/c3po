@@ -48,8 +48,16 @@ p {
   margin: 8px 0;
 }
 
+#options > li {
+  font-weight: bold;
+}
+
 form, fieldset {
   margin: 8px 0;
+}
+
+legend {
+  font-weight: bold;
 }
 
 button, input, select, textarea {
@@ -64,8 +72,6 @@ button .icon {
 }
 
 textarea {
-  display: block;
-  width: 100%;
   min-height: 8em;
   padding: 8px;
   border-radius: 8px;
