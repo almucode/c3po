@@ -33,7 +33,7 @@ function start(args) {
     dom.clearValue("summary");
     dom.setValue("count", 0);
 
-    let options = dom.getValues("vote", 'input[name="option"]', true);
+    let options = dom.getValues("options", 'input', true);
     if (!options.length) {
       return;
     }
