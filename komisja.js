@@ -18,17 +18,12 @@ function start(args) {
   dom.addClickListener("sum", summarizeVotes);
 
   function addOption() {
-    let form = document.getElementById("vote");
-    let button = document.getElementById("more");
+    let options = document.getElementById("options");
+    let option = options.lastElementChild.cloneNode(true);
+    option.lastElementChild.value = "";
+    dom.appendChild(options, option);
     let max = document.getElementById("max");
-    let options = Number(max.getAttribute("max")) + 1
-    let label = form.querySelector('label[name="order"]').cloneNode(true);
-    label.textContent = options
-    dom.prependSibling(button, label);
-    let option = form.querySelector('input[name="option"]').cloneNode(true);
-    option.value = "";
-    dom.prependSibling(button, option);
-    max.setAttribute("max", options);
+    max.setAttribute("max", options.childElementCount);
   }
 
   function createPoll() {
@@ -36,7 +31,7 @@ function start(args) {
 
     votes = new Votes(dom.getValue("max"));
     dom.clearValue("summary");
-	document.getElementById("count").textContent = 0;
+    dom.setValue("count", 0);
 
     let options = dom.getValues("vote", 'input[name="option"]', true);
     if (!options.length) {
