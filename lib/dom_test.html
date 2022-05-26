@@ -92,21 +92,6 @@ document.addEventListener("DOMContentLoaded", () => {
     assert.equal(clicked, false);
   });
 
-  test("Prepend element", () => {
-    let input = document.getElementById("input_element");
-    let button = document.getElementById("button_element")
-    dom.prependSibling(input, button);
-    assert.equal(input.previousSibling, button);
-    dom.prependSibling(button, input);
-    assert.equal(button.previousSibling, input);
-  });
-
-  test("Prepend text", () => {
-    let input = document.getElementById("input_element");
-    dom.prependSibling(input, "prep");
-    assert.equal(input.previousSibling.textContent, "prep");
-  });
-
   test("Append child element", () => {
     let span = document.createElement("span");
     let input = document.getElementById("input_element");
