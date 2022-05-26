@@ -13,7 +13,7 @@ function start(args) {
   dom.addClickListener("more", addOption);
   dom.addClickListener("copy", copyKey);
   dom.addClickListener("create", createPoll);
-  dom.addEnterListener("ballot", addVote);
+  dom.addEnterListener("ballots", addVote);
   dom.addClickListener("add", addVote);
   dom.addClickListener("sum", summarizeVotes);
 
@@ -52,33 +52,34 @@ function start(args) {
   }
 
   function addVote() {
-    let input = document.getElementById("ballot");
-    if (!input.value || !privateKey) {
+    let ballots = dom.getValue("ballots");
+    if (!ballots || !privateKey) {
       return;
     }
-    // Disable elements to prevent duplications/overwrites
-    input.disable = true;
-    let button = document.getElementById("add");
-    button.disable = true;
-    // Split (using predefined separators) and deduplicate ballots
-    let separators = /\n|\r|,| |\.|:|;/;
-    let ballots = [...new Set(input.value.split(separators).filter(n => n))];
-    // Clear the input, so if decryption takes time, user can see it's started
-    input.value = "";
-    // Now we can add each vote
-    let promises = []
-    for (let b in ballots) {
-      promises.push(poll.decryptVote(ballots[b], privateKey).then(vote => {
-        votes.add(vote);
-      }, error => {input.value += ballots[b] + "\n\n";}));
+    // Split (using whitespace or punctuation) and deduplicate entries
+    ballots = new Set(ballots.split(/[\s,.:;]/);
+    // Clear the input and disable elements to prevent duplications/overwrites
+    dom.disable("ballots");
+    dom.disable("add");
+    dom.clearValue("ballots");
+    // Start parsing the ballots
+    let promises = [];
+    for (let ballot of ballots) {
+      promises.push(poll.decryptVote(ballot, privateKey).then(
+        vote => {
+          votes.add(vote);
+        },
+        error => {
+          dom.appendValue("ballots", ballot + "\n\n");
+        }));
     }
-    // Wait for all Promises to fulfill
+    // Wait for all Promises
     Promise.all(promises).finally(() => {
       // Update counter
       dom.setValue("count", votes.total);
       // Unlock elements
-      button.disable = false;
-      input.disable = false;
+      dom.enable("ballots");
+      dom.enable("add");
     });
   }
 
