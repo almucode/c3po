@@ -23,8 +23,9 @@ asyncTest("Serialize and deserialize", async () => {
 asyncTest("Encrypt and decrypt", async () => {
   let keyPair = await crypto.generateKeyPair();
   let poll = new Poll(["a", "b", "c"], 2, keyPair.publicKey);
-  let ballot = await poll.encryptVote([0, 2]);
-  let vote = await poll.decryptVote(ballot, keyPair.privateKey);
+  let ballot = await poll.encryptVote("foo", [0, 2]);
+  let [id, vote] = await poll.decryptVote(ballot, keyPair.privateKey);
+  assert.equal(id, "foo");
   assert.valuesEqual(vote, ["a", "c"]);
 });
 </script>

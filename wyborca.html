@@ -41,10 +41,13 @@
           Wypełnij formularz i wygeneruj zaszyfrowaną kartę głosowania:
         </p>
         <form id="vote" data-max-label="Maksymalnie:">
-          <div class="placeholder">
-            Tutaj zostanie wygenerowany formularz gdy tylko wczytasz dane
-            głosowania.
-          </div>
+          <fieldset id="fieldset">
+            <div class="placeholder">
+              Tutaj zostanie wygenerowany formularz gdy tylko wczytasz dane
+              głosowania.
+            </div>
+          </fieldset>
+          <label for="id" class="before">Twój unikalny identyfikator</label><input id="id" readonly size=5>
           <button id="encrypt"><i class="icon icon-encrypt"></i> Szyfruj</button>
         </form>
       </section>

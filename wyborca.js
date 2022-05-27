@@ -17,12 +17,12 @@ function start() {
     if (!key) {
       return;
     }
+    dom.setValue("id", Poll.generateId());
     Poll.deserialize(key).then(deserializedPoll => {
       poll = deserializedPoll;
       let form = document.getElementById("vote");
-      let button = document.getElementById("encrypt").cloneNode(true);
-      dom.removeChildren(form);
-      let fieldset = document.createElement("fieldset");
+      let fieldset = document.getElementById("fieldset");
+      dom.removeChildren(fieldset);
       if (poll.maxOptions > 1 && poll.maxOptions < poll.options.length) {
         let legend = document.createElement("legend");
         legend.textContent = form.dataset.maxLabel + " " + poll.maxOptions;
@@ -45,16 +45,15 @@ function start() {
         dom.appendChild(div, label);
         dom.appendChild(fieldset, div);
       }
-      dom.appendChild(form, fieldset);
-      dom.appendChild(form, button);
       dom.clearValue("ballot");
       dom.addClickListener("encrypt", encryptVote);
     });
   }
 
   function encryptVote() {
+    let id = dom.getValue("id");
     let indices = dom.getValues("vote", 'input[name="option"]:checked', false);
-    return poll.encryptVote(indices).then(ballot => {
+    return poll.encryptVote(id, indices).then(ballot => {
       dom.setValue("ballot", ballot);
       copyBallot();
     });

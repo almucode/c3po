@@ -66,8 +66,8 @@ function start(args) {
     let promises = [];
     for (let ballot of ballots) {
       promises.push(poll.decryptVote(ballot, privateKey).then(
-        vote => {
-          votes.add(vote);
+        ([id, vote]) => {
+          votes.add(id, vote);
         },
         error => {
           dom.appendValue("ballots", ballot + "\n\n");

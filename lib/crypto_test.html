@@ -39,4 +39,12 @@ asyncTest("Decryption error", async () => {
     await crypto.decrypt(keyPair.privateKey, ciphertext);
   }, "OperationError");
 });
+
+test("Generate random bytes", () => {
+  let a = crypto.getRandomBytes(4);
+  assert.equal(a.length, 4);
+  let b = crypto.getRandomBytes(4);
+  assert.equal(b.length, 4);
+  assert.valuesNotEqual(a, b);
+});
 </script>
